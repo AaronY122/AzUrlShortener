@@ -28,12 +28,11 @@ using Microsoft.Extensions.Logging;
 using System.Net;
 using Cloud5mins.domain;
 using Microsoft.Extensions.Configuration;
-//using System.Security.Claims;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Text.Json;
-using System.Net.Http;
 
 namespace Cloud5mins.Function
 {
@@ -42,11 +41,11 @@ namespace Cloud5mins.Function
     {
 
         [FunctionName("UrlShortener")]
-        public static async Task<HttpResponseMessage> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequestMessage req,
+        public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
         ILogger log,
-        ExecutionContext context)
-        //ClaimsPrincipal principal)
+        ExecutionContext context,
+        ClaimsPrincipal principal)
         {
             log.LogInformation($"C# HTTP trigger function processed this request: {req}");
             string userId = string.Empty;
