@@ -10,10 +10,10 @@ namespace Cloud5mins.domain
     public static class Utility
     {
         //reshuffled for randomisation, same unique characters just jumbled up, you can replace with your own version
-        private const string ConversionCode = "FjTG0s5dgWkbLf_8etOZqMzNhmp7u6lUJoXIDiQB9-wRxCKyrPcv4En3Y21aASHV";
+        private const string ConversionCode = "FjTs5dgWkbLf8etZqMzNhmp7u6UJoXIDQB9wRxCKyrPcv4En3Y21aASHV";
         private static readonly int Base = ConversionCode.Length;
         //sets the length of the unique code to add to vanity
-        private const int MinVanityCodeLength = 5;
+        private const int MinVanityCodeLength = 4;
 
         public static async Task<string> GetValidEndUrl(string vanity, StorageTableHelper stgHelper)
         {
