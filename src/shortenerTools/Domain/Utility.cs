@@ -13,7 +13,7 @@ namespace Cloud5mins.domain
         private const string ConversionCode = "FjTG0s5dgWkbLf8etZqMzNhmp7u6UJoXIDiQB9wRxCKyrPcv4En3Y21aASHV";
         private static readonly int Base = ConversionCode.Length;
         //sets the length of the unique code to add to vanity
-        private const int MaxVanityCodeLength = 2;
+        private const int MaxVanityCodeLength = 5;
 
         public static async Task<string> GetValidEndUrl(string vanity, StorageTableHelper stgHelper)
         {
@@ -58,7 +58,8 @@ namespace Cloud5mins.domain
                     .Select(b => ConversionCode[b % ConversionCode.Length]);
                 var token = new string(chars.ToArray());
                 var reversedToken = string.Join(string.Empty, token.Reverse());
-                return reversedToken + uniqueId;
+                return reversedToken;
+                //uniqueId;
             }
         }
 
