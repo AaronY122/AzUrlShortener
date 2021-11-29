@@ -5,7 +5,7 @@ Input:
     {
         // [Required] The url you wish to have a short version for
         "url": "https://docs.microsoft.com/en-ca/azure/azure-functions/functions-create-your-first-function-visual-studio",
-        
+
         // [Optional] Title of the page, or text description of your choice.
         "title": "Quickstart: Create your first function in Azure using Visual Studio"
 
@@ -44,8 +44,8 @@ namespace Cloud5mins.Function
         public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
         ILogger log,
-        ExecutionContext context,
-        ClaimsPrincipal principal)
+        ExecutionContext context)
+        //ClaimsPrincipal principal)
         {
             log.LogInformation($"C# HTTP trigger function processed this request: {req}");
             string userId = string.Empty;
@@ -54,17 +54,17 @@ namespace Cloud5mins.Function
 
             try
             {
-                var invalidRequest = Utility.CatchUnauthorize(principal, log);
+                //var invalidRequest = Utility.CatchUnauthorize(principal, log);
 
-                if (invalidRequest != null)
-                {
-                    return invalidRequest;
-                }
-                else
-                {
-                    userId = principal.FindFirst(ClaimTypes.GivenName).Value;
-                    log.LogInformation("Authenticated user {user}.", userId);
-                }
+                //if (invalidRequest != null)
+                //{
+                //    return invalidRequest;
+                //}
+                //else
+                //{
+                //    userId = principal.FindFirst(ClaimTypes.GivenName).Value;
+                //    log.LogInformation("Authenticated user {user}.", userId);
+                //}
 
                 // Validation of the inputs
                 if (req == null)
