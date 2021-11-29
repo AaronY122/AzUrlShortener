@@ -23,7 +23,7 @@ namespace Cloud5mins.domain
                 string getCode() => Encode(newKey);
                 if (await stgHelper.IfShortUrlEntityExistByVanity(getCode()))
                     return await GetValidEndUrl(vanity, stgHelper);
-              
+
                 return string.Join(string.Empty, getCode());
             }
             else
@@ -45,7 +45,7 @@ namespace Cloud5mins.domain
             return host + "/" + vanity;
         }
 
-        // generates a unique, random, and alphanumeric token for the use as a url 
+        // generates a unique, random, and alphanumeric token for the use as a url
         //(not entirely secure but not sequential so generally not guessable)
         public static string GenerateUniqueRandomToken(int uniqueId)
         {
@@ -82,15 +82,15 @@ namespace Cloud5mins.domain
                 return new UnauthorizedResult();
             }
 
-            if (principal.FindFirst(ClaimTypes.GivenName) is null)
-            {
-                log.LogError("Claim not Found");
-                return new BadRequestObjectResult(new
-                {
-                    message = "Claim not Found",
-                    StatusCode = System.Net.HttpStatusCode.BadRequest
-                });
-            }
+            //if (principal.FindFirst(ClaimTypes.GivenName) is null)
+            //{
+            //    log.LogError("Claim not Found");
+            //    return new BadRequestObjectResult(new
+            //    {
+            //        message = "Claim not Found",
+            //        StatusCode = System.Net.HttpStatusCode.BadRequest
+            //    });
+            //}
             return null;
         }
     }
